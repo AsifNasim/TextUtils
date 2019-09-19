@@ -28,32 +28,32 @@ def analyze(Request):
                 analyzed = analyzed + char
         params = {'purpose':' Punctuations Removed ', 'analyzed_text': analyzed}
         djtext = analyzed
-   
-        
+
+
     if(fullcaps == "on"):
         analyzed =""
         for char in djtext:
             analyzed += char.upper()
         params = {'purpose':' Converted String to Upper Case ', 'analyzed_text': analyzed}
         djtext = analyzed
-        
-    
+
+
     if(extraSpaceRemover == "on"):
         analyzed =""
         for index,char in enumerate(djtext):
             if djtext[index] == " " and djtext[index +1] == " ":
                 pass
             else:
-                analyzed = analyzed + char 
+                analyzed = analyzed + char
         params = {'purpose':' Extra Spaces have been removed ', 'analyzed_text': analyzed}
         djtext = analyzed
-         
+
 
     if(newLineRemover == "on"):
         analyzed = ""
         for char in djtext:
             if char != "\n" and char != "\r":
-                analyzed = analyzed + char 
+                analyzed = analyzed + char
 
         params = {'purpose':' New Line has been removed  ', 'analyzed_text': analyzed}
     if(removePunc != "on" and fullcaps != "on" and extraSpaceRemover != "on" and newLineRemover != "on"):
@@ -61,5 +61,3 @@ def analyze(Request):
 
 
     return render(Request, 'analyze.html', params)
-    
-        
